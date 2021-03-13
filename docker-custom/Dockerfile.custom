@@ -71,7 +71,8 @@ COPY --from=build /usr/src/node-red/prod_node_modules ./node_modules
 RUN chown -R node-red:root /usr/src/node-red && \
     /tmp/install_devtools.sh && \
     rm -r /tmp/*
-
+# Custom install
+RUN apk add --no-cache alsa-utils
 USER node-red
 
 # Env variables
