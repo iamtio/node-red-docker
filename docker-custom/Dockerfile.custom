@@ -18,11 +18,12 @@ RUN set -ex && \
         nano \
         git \
         openssl \
-        openssh-client && \
+        openssh-client \
+        ca-certificates && \
     mkdir -p /usr/src/node-red /data && \
     deluser --remove-home node && \
     adduser -h /usr/src/node-red -D -H node-red -u 1000 && \
-    chown -R node-red:root /data && chmod -R g+rwX /data && \ 
+    chown -R node-red:root /data && chmod -R g+rwX /data && \
     chown -R node-red:root /usr/src/node-red && chmod -R g+rwX /usr/src/node-red
     # chown -R node-red:node-red /data && \
     # chown -R node-red:node-red /usr/src/node-red
@@ -71,6 +72,7 @@ COPY --from=build /usr/src/node-red/prod_node_modules ./node_modules
 RUN chown -R node-red:root /usr/src/node-red && \
     /tmp/install_devtools.sh && \
     rm -r /tmp/*
+
 # Custom install
 RUN apk add --no-cache alsa-utils
 USER node-red

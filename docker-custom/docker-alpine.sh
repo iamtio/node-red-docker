@@ -13,4 +13,4 @@ docker build --rm --no-cache \
     --build-arg BUILD_DATE="$(date +"%Y-%m-%dT%H:%M:%SZ")" \
     --build-arg TAG_SUFFIX=default \
     --file Dockerfile.custom \
-    --tag iamtio/node-red:1.2.9 .
+    --tag iamtio/node-red:1.3.5 .
